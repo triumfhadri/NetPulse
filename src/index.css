@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: theme('colors.enterprise.bg');
+  color: theme('colors.enterprise.text');
+  overflow: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+.dark-scroll::-webkit-scrollbar-thumb { background: #475569; }
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid theme('colors.enterprise.border');
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 0.75rem;
+}
+
+.tab-btn.active {
+  border-bottom: 2px solid theme('colors.brand.600');
+  color: theme('colors.brand.700');
+  background: theme('colors.brand.50');
+}
+
+.cyber-grid-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+.cyber-grid {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-size: 60px 60px;
+  background-image:
+      linear-gradient(to right, rgba(239, 68, 68, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+  animation: gridScroll 15s linear infinite;
+}
+.cyber-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 20%, theme('colors.enterprise.bg') 90%);
+}
+@keyframes gridScroll {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(60px) translateX(60px); }
+}
